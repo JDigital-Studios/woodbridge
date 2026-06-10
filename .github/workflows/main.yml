@@ -2,7 +2,7 @@ name: CI-Deploy-to-WP-Engine
 
 on:
   push:
-    branches: [woodbridgestg]
+    branches: [woodbridstg]
   workflow_dispatch:
 
 jobs:
@@ -34,4 +34,4 @@ jobs:
           ssh-add key.pem
           mkdir -p ~/.ssh
           echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-          git push origin woodbridgestg:master --force
+          git push origin woodbridstg:master --force
