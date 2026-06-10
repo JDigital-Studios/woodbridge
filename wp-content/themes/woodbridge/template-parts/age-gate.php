@@ -45,7 +45,9 @@ $age_form_id = get_field('welcome_popup_form_id', 'options');
 			<svg class="absolute left-1/2 -translate-x-1/2 top-[75%] lg:top-1/2 -translate-y-1/2 w-[106%] h-auto z-10" data-name="Layer 2" id="age_gate_logo" viewBox="0 0 210.45 41.49" xmlns="http://www.w3.org/2000/svg">
 				<defs>
 					<style>
-						.cls-1 {fill: #fdf8f4}
+						.cls-1 {
+							fill: #fdf8f4
+						}
 					</style>
 				</defs>
 				<g data-name="Layer 2" id="Layer_2-2">
