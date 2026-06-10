@@ -1,0 +1,190 @@
+.main-header {
+  .btn-menu {
+    &:focus {
+      @apply outline-0;
+    }
+
+    &.active {
+      span {
+        @apply opacity-0;
+      }
+
+      &:after,
+      &:before {
+        @apply top-[9px];
+      }
+
+      &:before {
+        @apply rotate-45;
+      }
+
+      &:after {
+        @apply -rotate-45;
+      }
+    }
+  }
+
+  .main-header-navigation {
+    &.active {
+      @apply lg-down:h-[calc(100svh-74px)] lg-down:block;
+    }
+
+    @media only screen and (max-width: 1024px) {
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  .main-header-navigation-menu {
+    @apply lg-down:text-center lg-down:pb-20 lg:flex lg:justify-center lg:gap-[76px];
+
+    > li > a {
+      @apply block lg:inline-block font-title text-[1.313rem] lg:text-15 !leading-none font-medium tracking-w uppercase text-black py-[20px] lg:py-[18px];
+
+      &:hover {
+        @apply lg:underline;
+      }
+    }
+
+    > li {
+      > .sub-menu {
+        @apply lg:transition-all lg:duration-500 lg:opacity-0 lg:max-h-0 lg:invisible lg:absolute lg:top-full lg:w-full lg:left-0 lg:z-[999] lg:flex lg:justify-center lg:gap-[154px] lg:bg-[#FDF8F4] lg:px-5 lg:py-[34px] lg:before:content-[''] lg:before:absolute lg:before:top-0 lg:before:left-0 lg:before:w-full lg:before:h-[7px] lg:before:bg-gradient-to-b lg:before:from-black/10 lg:before:to-transparent;
+
+        > li > a {
+          @apply inline-block font-title text-[1.063rem] lg:text-15 leading-[1.24em] font-medium tracking-w uppercase text-black py-1 mb-2.5 transition-none;
+
+          &:after {
+            display: block;
+            content: attr(title);
+            font-weight: 600;
+            height: 1px;
+            color: transparent;
+            overflow: hidden;
+            visibility: hidden;
+          }
+
+          &:hover {
+            @apply font-semibold;
+          }
+        }
+
+        .sub-menu {
+          @apply hidden lg:block transition-all ease-in-out duration-300 delay-200 opacity-0;
+          transform: translate3d(0, 10px, 0);
+          backface-visibility: hidden;
+
+          > li {
+            @apply block mb-2.5;
+
+            /*@apply block mb-2.5 transition-all ease-in-out delay-200 opacity-0; */
+
+            /*&:first-of-type {
+	                        transform: translateY(-25px);
+	                        transition-duration: 50ms;
+	                    }
+
+	                    &:nth-of-type(2) {
+	                        transform: translateY(-50px);
+	                        transition-duration: 50ms;
+	                    }
+
+	                    &:nth-of-type(3) {
+	                        transform: translateY(-75px);
+	                        transition-duration: 100ms;
+	                    }
+
+	                    &:nth-of-type(4) {
+	                        transform: translateY(-100px);
+	                        transition-duration: 100ms;
+	                    }
+
+	                    &:nth-of-type(5) {
+	                        transform: translateY(-125px);
+	                        transition-duration: 200ms;
+	                    }
+
+	                    &:nth-of-type(6) {
+	                        transform: translateY(-150px);
+	                        transition-duration: 200ms;
+	                    }
+
+	                    &:nth-of-type(7) {
+	                        transform: translateY(-175px);
+	                        transition-duration: 300ms;
+	                    }
+
+	                    &:nth-of-type(8) {
+	                        transform: translateY(-200px);
+	                        transition-duration: 300ms;
+	                    }
+
+	                    &:nth-of-type(9) {
+	                        transform: translateY(-225px);
+	                        transition-duration: 400ms;
+	                    }
+
+	                    &:nth-of-type(10) {
+	                        transform: translateY(-250px);
+	                        transition-duration: 400ms;
+	                    }*/
+          }
+
+          > li > a {
+            @apply inline-block font-title text-[0.75rem] leading-[1.24em] font-medium tracking-w uppercase text-black py-1;
+
+            &:after {
+              display: block;
+              content: attr(title);
+              font-weight: 600;
+              height: 1px;
+              color: transparent;
+              overflow: hidden;
+              visibility: hidden;
+            }
+
+            &:hover {
+              @apply font-semibold;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.active {
+    @apply -top-[98px];
+  }
+
+  &.active-again {
+    @apply !top-0;
+  }
+}
+
+.main-header .main-header-navigation-menu > li.current-menu-item > a {
+  @apply underline;
+}
+
+.no-touch
+  .main-header
+  .main-header-navigation-menu
+  > li.menu-item-has-children:hover
+  > a {
+  @apply lg:underline;
+}
+
+.no-touch
+  .main-header
+  .main-header-navigation-menu
+  > li.menu-item-has-children:hover
+  > .sub-menu {
+  @apply lg:opacity-100 lg:visible lg:max-h-[900px];
+
+  .sub-menu {
+    @apply opacity-100;
+    transform: translate3d(0, 0, 0);
+
+    /*li {
+            @apply translate-y-0 opacity-100;
+        }  */
+  }
+}

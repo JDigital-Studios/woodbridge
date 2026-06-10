@@ -1,0 +1,92 @@
+@layer base {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-title font-medium text-black tracking-w uppercase mb-6;
+	}
+
+	.title-text {
+		@apply font-text font-normal tracking-[0] normal-case;
+	}
+
+	p {
+  		@apply text-lg !leading-[1.8em] font-normal mb-6;
+	}
+
+	.entry {
+		h1 {
+			@apply text-35 lg:text-40 leading-[1.24em];
+		}
+
+		h2,
+		h3 {
+			@apply text-35 leading-[1.24em];
+		}
+
+		h3 {
+			@apply text-[1.875rem] leading-[1.24em];
+		}
+
+		h4 {
+			@apply text-[1.625rem] leading-[1.28em];
+		}
+
+		h5 {
+			@apply text-2xl !leading-[1.32em];
+		}
+
+		h6 {
+			@apply text-xl !leading-[1.36em];
+		}
+
+		ul {
+			@apply list-disc;
+		}
+
+		ol {
+			@apply list-decimal;
+		}
+
+		ul,
+		ol {
+			@apply list-inside p-0 m-0 mb-4;
+
+			li {
+				@apply text-lg !leading-[1.8em] font-normal;
+
+				a {
+					@apply underline hover:no-underline;
+				}
+			}
+		}
+
+		&.entry-xl {
+			p {
+				@apply text-xl !leading-[1.88em];
+			}
+		}
+
+		&.entry-2xl {
+			p {
+				@apply text-[1.75rem] !leading-[1.5em] tracking-[0.01em]; 
+			}
+		}
+
+		&.entry-3xl {
+			p {
+				@apply text-[2.063rem] lg:text-[2.688rem] !leading-[1.3em] tracking-[0.01em]; 
+			}
+		}
+	}
+
+	blockquote {
+		@apply border-l-[0.313rem] border-solid border-primary-600 mb-6 pl-5 py-4;
+
+		p {
+			@apply m-0;
+		}
+	}
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.png">
+	<link rel="stylesheet" href="https://use.typekit.net/rpx2lib.css">
+	<link rel="stylesheet" href="main.min.css">
+</head>
+<body>
+<div id="terms-popup" class="content-popup hidden fixed top-0 left-0 w-full h-full text-center z-[1002] before:content-[''] before:inline-block before:align-middle before:h-full">
+	<div class="content-popup-overlay absolute top-0 left-0 w-full h-full z-[1001] bg-black/[0.86]"></div>
+	<div class="relative z-[10002] inline-block align-middle max-w-[960px] w-[calc(100%-40px)] my-10 bg-white">
+		<div class="relative z-30 text-left px-5 py-20 text-black">
+			<button class="close-popup absolute top-5 right-5 w-10 h-10 bg-black flex items-center justify-center text-2xl !leading-none text-white">
+				<svg xmlns="http://www.w3.org/2000/svg" class="block w-5 h-5" x="0px" y="0px" viewBox="0 0 24 24">
+					<path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z" fill="#FFF"></path>
+				</svg>
+			</button>
+			<div class="entry">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et consequat odio, vitae viverra erat. Curabitur nec neque ac urna ultrices auctor. Suspendisse mattis pretium dui, sit amet fringilla libero. Nullam eget ex at velit congue malesuada non eu lorem. Donec ullamcorper urna nulla, nec porttitor libero aliquet at. Morbi congue faucibus dolor tristique ultrices. Nullam hendrerit mauris id odio maximus molestie.</p>
+
+				<p>Vestibulum vitae justo tempus, pulvinar nibh porta, bibendum sem. Pellentesque quam nisi, porttitor sit amet orci eget, feugiat mattis quam. Phasellus blandit nisi a metus venenatis vehicula. Nam elementum fermentum mauris, nec ullamcorper ligula pretium in. Duis dapibus velit in purus malesuada ornare. Etiam velit odio, sagittis luctus mi eget, placerat imperdiet tellus. Morbi nec nisl non eros luctus feugiat sit amet id nisl. Fusce vel pulvinar felis.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="privacy-popup" class="content-popup hidden fixed top-0 left-0 w-full h-full text-center z-[1002] before:content-[''] before:inline-block before:align-middle before:h-full">
+	<div class="content-popup-overlay absolute top-0 left-0 w-full h-full z-[1001] bg-black/[0.86]"></div>
+	<div class="relative z-[10002] inline-block align-middle max-w-[960px] w-[calc(100%-40px)] my-10 bg-white">
+		<div class="relative z-30 text-left px-5 py-20 text-black">
+			<button class="close-popup absolute top-5 right-5 w-10 h-10 bg-black flex items-center justify-center text-2xl !leading-none text-white">
+				<svg xmlns="http://www.w3.org/2000/svg" class="block w-5 h-5" x="0px" y="0px" viewBox="0 0 24 24">
+					<path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z" fill="#FFF"></path>
+				</svg>
+			</button>
+			<div class="entry">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et consequat odio, vitae viverra erat. Curabitur nec neque ac urna ultrices auctor. Suspendisse mattis pretium dui, sit amet fringilla libero. Nullam eget ex at velit congue malesuada non eu lorem. Donec ullamcorper urna nulla, nec porttitor libero aliquet at. Morbi congue faucibus dolor tristique ultrices. Nullam hendrerit mauris id odio maximus molestie.</p>
+
+				<p>Vestibulum vitae justo tempus, pulvinar nibh porta, bibendum sem. Pellentesque quam nisi, porttitor sit amet orci eget, feugiat mattis quam. Phasellus blandit nisi a metus venenatis vehicula. Nam elementum fermentum mauris, nec ullamcorper ligula pretium in. Duis dapibus velit in purus malesuada ornare. Etiam velit odio, sagittis luctus mi eget, placerat imperdiet tellus. Morbi nec nisl non eros luctus feugiat sit amet id nisl. Fusce vel pulvinar felis.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section class="age-popup fixed top-0 left-0 w-full h-screen z-[1001] bg-[#FDF8F4]" style="display: none;">
+	<div class="age-popup-inner flex flex-col h-full">
+	    <div class="age-popup-image h-[55%] lg:h-[62%] relative">
+	    	<img class="hidden lg:block w-full h-full object-cover object-center absolute top-0 left-0" src="./images/WoodBridge_AgeGate_Desktop.jpg" alt=""> <!-- Desktop image -->
+	    	<img class="block lg:hidden w-full h-full object-cover object-center absolute top-0 left-0" src="./images/WoodBridge_AgeGate_Mobile.jpg" alt=""> <!-- Mobile image -->
+	    </div>
+	    <div class="age-popup-content h-[45%] lg:h-[38%]">
+	    	<div class="px-5 py-8 text-center">
+	    		<div class="mb-6">
+					<label class="custom-checkbox">
+						<input type="checkbox">
+						<span class="checkmark"></span>
+						I agree to the <a href="#terms-popup" class="open-popup">Terms of Service</a> and <a href="#privacy-popup" class="open-popup">Privacy Policy</a>
+					</label>
+				</div>
+				<h1 class="text-[1.625rem] leading-[1.2em] font-medium tracking-[0.07em] text-black mb-3">Are you of legal drinking age?</h1>
+				<div class="flex justify-center w-full mb-6 md:mb-8">
+					<button class="age-button-yes btn min-w-[50px] mx-5">Yes</button>
+					<button class="age-button-no btn min-w-[50px] mx-5">No</button>
+				</div>
+				<div class="max-w-[480px] w-full mx-auto">
+					<p class="text-[0.625rem] leading-[1.4em] font-normal text-black mb-[28px]">
+						You must be at least 21 years old to view this site. By clicking “yes” you affirm that you are at least 21 years old. You can learn more about how we use cookies by reviewing our <a href="#privacy-popup" class="open-popup underline hover:no-underline">Privacy Policy</a>.
+					</p>
+					<p class="text-[0.625rem] leading-[1.4em] font-normal text-black m-0">
+						&copy; 2026 Woodbridge Wines, Acampo, CA
+					</p>
+				</div>
+	    	</div>
+	    </div>
+	</div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="main.min.js"></script>
+</body>
+</html>

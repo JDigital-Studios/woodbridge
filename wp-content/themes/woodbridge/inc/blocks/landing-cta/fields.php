@@ -1,0 +1,112 @@
+<?php
+/**
+ * Landing CTA Block Fields
+ *
+ * Return an array of ACF field definitions.
+ * The block loader will automatically register these fields.
+ */
+
+
+return [
+	[
+		'key' => 'field_headline',
+		'label' => 'Headline',
+		'name' => 'headline',
+		'aria-label' => '',
+		'type' => 'text',
+		'instructions' => '',
+		'required' => 0,
+		'conditional_logic' => 0,
+		'wrapper' => [
+			'width' => '',
+			'class' => '',
+			'id' => '',
+		],
+		'default_value' => '',
+		'maxlength' => '',
+		'allow_in_bindings' => 0,
+		'placeholder' => '',
+		'prepend' => '',
+		'append' => '',
+	],
+	[
+		'key' => 'field_subheader',
+		'label' => 'Subheader',
+		'name' => 'subheader',
+		'aria-label' => '',
+		'type' => 'text',
+		'instructions' => '',
+		'required' => 0,
+		'conditional_logic' => 0,
+		'wrapper' => [
+			'width' => '',
+			'class' => '',
+			'id' => '',
+		],
+		'default_value' => '',
+		'maxlength' => '',
+		'allow_in_bindings' => 0,
+		'placeholder' => '',
+		'prepend' => '',
+		'append' => '',
+	],
+	[
+		'key' => 'field_text_1',
+		'label' => 'Text #1',
+		'name' => 'text_1',
+		'aria-label' => '',
+		'type' => 'text',
+		'instructions' => '',
+		'required' => 0,
+		'conditional_logic' => 0,
+		'wrapper' => [
+			'width' => '',
+			'class' => '',
+			'id' => '',
+		],
+		'default_value' => '',
+		'maxlength' => '',
+		'allow_in_bindings' => 0,
+		'placeholder' => '',
+		'prepend' => '',
+		'append' => '',
+	],
+	[
+		'key' => 'field_text_2',
+		'label' => 'Text #2',
+		'name' => 'text_2',
+		'aria-label' => '',
+		'type' => 'text',
+		'instructions' => '',
+		'required' => 0,
+		'conditional_logic' => 0,
+		'wrapper' => [
+			'width' => '',
+			'class' => '',
+			'id' => '',
+		],
+		'default_value' => '',
+		'maxlength' => '',
+		'allow_in_bindings' => 0,
+		'placeholder' => '',
+		'prepend' => '',
+		'append' => '',
+	],
+	[
+		'key' => 'field_button',
+		'label' => 'Button',
+		'name' => 'button',
+		'aria-label' => '',
+		'type' => 'link',
+		'instructions' => '',
+		'required' => 0,
+		'conditional_logic' => 0,
+		'wrapper' => [
+			'width' => '',
+			'class' => '',
+			'id' => '',
+		],
+		'return_format' => 'array',
+		'allow_in_bindings' => 0,
+	],
+];

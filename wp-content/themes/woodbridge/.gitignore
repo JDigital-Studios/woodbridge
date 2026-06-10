@@ -1,0 +1,20 @@
+node_modules/
+package-lock.json
+
+# IDE / editor
+.vscode/
+.idea/
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / credentials
+.env
+.env.*
+
+# SFTP sync config (contains credentials)
+.sftp.json
+
+test-results

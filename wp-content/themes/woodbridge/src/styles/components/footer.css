@@ -1,0 +1,21 @@
+.main-footer {
+	.footer-menu {
+		@apply list-none p-0 m-0 text-center lg:text-right lg-down:flex lg-down:items-center lg-down:justify-center lg-down:flex-wrap;
+
+		> li {
+			@apply lg:mb-0.5 lg-down:w-1/2 relative lg-down:my-1 lg-down:leading-none;
+
+			&:nth-child(odd) {
+				@apply lg-down:text-right lg-down:pr-1.5 lg-down:before:content-[''] lg-down:before:absolute lg-down:before:top-[4px] lg-down:before:right-0 lg-down:before:w-px lg-down:before:h-[calc(100%-6px)] lg-down:before:bg-black;
+			}
+
+			&:nth-child(even) {
+				@apply lg-down:text-left lg-down:pl-1.5;
+			}
+		}
+
+		> li > a {
+			@apply inline-block lg:py-1 font-title text-[0.625rem] sm:text-[0.75rem] !leading-[1.24em] font-medium tracking-[0.03em] uppercase text-black hover:underline;
+		}
+	}
+}

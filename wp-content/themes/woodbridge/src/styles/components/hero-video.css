@@ -1,0 +1,169 @@
+.hero-video {
+  @apply relative z-20 bg-[#FDF8F4];
+}
+
+.hero-video__embed {
+  @apply relative w-full h-0 overflow-hidden;
+  padding-bottom: 56.25%;
+
+  iframe {
+    @apply absolute inset-0 w-full h-full border-0;
+  }
+}
+
+/* Fullscreen: fill the screen */
+.hero-video[data-fullscreen="true"] {
+  @apply fixed inset-0 z-[9999] bg-black;
+
+  .hero-video__embed {
+    @apply h-full;
+    padding-bottom: 0;
+  }
+}
+
+/* Controls overlay — sits on top of native Vimeo chrome */
+.hero-video__controls {
+  @apply absolute bottom-0 left-0 right-0;
+  z-index: 20;
+  @apply flex flex-col gap-1 px-4 pb-3 pt-16;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7) 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hero-video:hover .hero-video__controls,
+.hero-video[data-paused="true"] .hero-video__controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Each row */
+.hero-video__row {
+  @apply flex items-center gap-3;
+}
+
+/* Push fullscreen button to far right on row 2 */
+.hero-video__btn--fullscreen {
+  @apply ml-auto;
+}
+
+/* Buttons */
+.hero-video__btn {
+  @apply flex items-center justify-center text-white cursor-pointer;
+  @apply bg-transparent border-0 p-0;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.hero-video__btn:hover {
+  opacity: 1;
+}
+
+/* Play/pause icon toggle */
+.hero-video__icon--play {
+  display: none;
+}
+.hero-video[data-paused="true"] .hero-video__icon--pause {
+  display: none;
+}
+.hero-video[data-paused="true"] .hero-video__icon--play {
+  display: block;
+}
+
+/* Mute icon toggle — starts muted */
+.hero-video__icon--unmuted {
+  display: none;
+}
+.hero-video[data-muted="false"] .hero-video__icon--muted {
+  display: none;
+}
+.hero-video[data-muted="false"] .hero-video__icon--unmuted {
+  display: block;
+}
+
+/* CC button — underline when active */
+.hero-video__btn--cc {
+  opacity: 0.5;
+}
+.hero-video[data-cc="true"] .hero-video__btn--cc {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Fullscreen icon toggle */
+.hero-video__icon--collapse {
+  display: none;
+}
+.hero-video[data-fullscreen="true"] .hero-video__icon--expand {
+  display: none;
+}
+.hero-video[data-fullscreen="true"] .hero-video__icon--collapse {
+  display: block;
+}
+
+/* Progress bar */
+.hero-video__progress {
+  @apply flex-1 cursor-pointer;
+  padding: 4px 0;
+}
+
+.hero-video__progress-track {
+  @apply relative w-full overflow-hidden;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+}
+
+.hero-video__progress-fill {
+  @apply absolute top-0 left-0 h-full;
+  width: 0%;
+  background: #fff;
+  border-radius: 2px;
+  transition: width 0.15s linear;
+}
+
+.hero-video__progress:hover .hero-video__progress-track {
+  height: 6px;
+}
+
+/* Time display */
+.hero-video__time {
+  @apply text-white whitespace-nowrap;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+/* Volume slider */
+.hero-video__volume {
+  @apply cursor-pointer;
+  width: 80px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  outline: none;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    border: none;
+  }
+}
