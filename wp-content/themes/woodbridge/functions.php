@@ -97,7 +97,7 @@ function woodbridge_scripts()
 {
 
 	// css script
-	wp_enqueue_style('typekit', 'https://use.typekit.net/rpx2lib.css', [], WOODBRIDGE_VER);
+	wp_enqueue_style('typekit', 'https://use.typekit.net/jrk1yom.css', [], WOODBRIDGE_VER);
 	wp_enqueue_style('main', get_theme_file_uri('/dist/main.min.css'), [], WOODBRIDGE_VER);
 
 	// js script
