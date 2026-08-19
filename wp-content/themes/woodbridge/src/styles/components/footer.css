@@ -18,4 +18,12 @@
 			@apply inline-block lg:py-1 font-title text-[0.625rem] sm:text-[0.75rem] !leading-[1.24em] font-medium tracking-[0.03em] uppercase text-black hover:underline;
 		}
 	}
+
+	.footer-cookiebot {
+		@apply text-center mb-2;
+	}
+
+	.footer-cookiebot__link {
+		@apply inline-block text-black underline hover:no-underline;
+	}
 }

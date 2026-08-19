@@ -169,10 +169,49 @@ if ($newsletter_healdine || $newsletter_form_id) : ?>
 					endif; ?>
 				</div>
 			</div>
+			<div class="footer-cookiebot text-center mb-2">
+				<a href="#" id="woodbridge-cookiebot-preferences-link" class="title-text footer-cookiebot__link text-[0.625rem] leading-[1.36em]">Do Not Sell or Share My Personal Information</a>
+			</div>
 			<h6 class="title-text text-[0.625rem] leading-[1.36em] text-center m-0">&copy; <?php echo date('Y'); ?> Woodbridge Wines, Acampo, CA</h6>
 		</div>
 	</div>
 </footer>
+
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-implementation="wp" data-cbid="7e13051f-4f0b-4251-95ea-7eff0360080a" data-blockingmode="auto" type="text/javascript"></script>
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function () {
+		var cookiebotLink = document.getElementById('woodbridge-cookiebot-preferences-link');
+
+		if (!cookiebotLink) {
+			return;
+		}
+
+		cookiebotLink.addEventListener('click', function (event) {
+			event.preventDefault();
+
+			if (window.Cookiebot && typeof window.Cookiebot.renew === 'function') {
+				window.Cookiebot.renew();
+				return;
+			}
+
+			var attempts = 0;
+			var retryLimit = 10;
+			var retryInterval = setInterval(function () {
+				attempts += 1;
+
+				if (window.Cookiebot && typeof window.Cookiebot.renew === 'function') {
+					clearInterval(retryInterval);
+					window.Cookiebot.renew();
+					return;
+				}
+
+				if (attempts >= retryLimit) {
+					clearInterval(retryInterval);
+				}
+			}, 300);
+		});
+	});
+</script>
 
 <?php /* HIDDEN FOR LAUNCH
 if (get_field('welcome_popup_enable_popup', 'options')) :
