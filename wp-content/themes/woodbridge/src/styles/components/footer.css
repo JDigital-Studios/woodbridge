@@ -24,6 +24,9 @@
 	}
 
 	.footer-cookiebot__link {
-		@apply inline-block text-black underline hover:no-underline;
+		@apply inline-block text-black hover:no-underline;
+		text-decoration-line: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 2px;
 	}
 }

@@ -177,7 +177,7 @@ if ($newsletter_healdine || $newsletter_form_id) : ?>
 	</div>
 </footer>
 
-<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-implementation="wp" data-cbid="7e13051f-4f0b-4251-95ea-7eff0360080a" data-blockingmode="auto" type="text/javascript"></script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="7e13051f-4f0b-4251-95ea-7eff0360080a" data-blockingmode="auto" type="text/javascript"></script>
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function () {
 		var cookiebotLink = document.getElementById('woodbridge-cookiebot-preferences-link');
