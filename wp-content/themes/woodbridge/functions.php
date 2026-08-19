@@ -303,3 +303,21 @@ add_filter('wp_sitemaps_taxonomies', function ($taxonomies) {
 	unset($taxonomies['wine_category']);
 	return $taxonomies;
 });
+
+// Insert the Cookiebot footer link right after the Privacy Policy item
+function woodbridge_insert_cookiebot_after_privacy( $items, $args ) {
+	if ( isset( $args->theme_location ) && $args->theme_location !== 'footer' ) {
+		return $items;
+	}
+
+	$cookiebot = '<li id="menu-item-woodbridge-cookiebot" class="menu-item"><a href="#" id="woodbridge-cookiebot-preferences-link">Do Not Sell or Share My Personal Information</a></li>';
+
+	if ( preg_match( '/(<li[^>]*>.*?<a[^>]*>\s*privacy\s+policy\s*<\/a>.*?<\/li>)/is', $items, $match ) ) {
+		$items = str_replace( $match[1], $match[1] . $cookiebot, $items );
+	} else {
+		$items .= $cookiebot;
+	}
+
+	return $items;
+}
+add_filter( 'wp_nav_menu_items', 'woodbridge_insert_cookiebot_after_privacy', 10, 2 );

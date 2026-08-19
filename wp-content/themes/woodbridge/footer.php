@@ -169,9 +169,6 @@ if ($newsletter_healdine || $newsletter_form_id) : ?>
 					endif; ?>
 				</div>
 			</div>
-			<div class="footer-cookiebot text-center mb-2">
-				<a href="#" id="woodbridge-cookiebot-preferences-link" class="title-text footer-cookiebot__link text-[0.625rem] leading-[1.36em]">Do Not Sell or Share My Personal Information</a>
-			</div>
 			<h6 class="title-text text-[0.625rem] leading-[1.36em] text-center m-0">&copy; <?php echo date('Y'); ?> Woodbridge Wines, Acampo, CA</h6>
 		</div>
 	</div>
