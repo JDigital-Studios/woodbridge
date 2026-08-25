@@ -86,25 +86,42 @@ const stickyHeaderJS = () => {
 };
 
 const testimonialSliderJS = () => {
-  const testimonialSlider = document.querySelectorAll(".testimonials-slider");
+  const testimonialSliders = document.querySelectorAll(".testimonials-slider");
 
-  if (testimonialSlider) {
-    testimonialSlider.forEach((slider) => {
-      const tnsSlider = tns({
-        container: slider,
-        mode: "carousel",
-        items: 1,
-        mouseDrag: true,
-        touch: true,
-        autoplay: true,
-        autoplayTimeout: 4000,
-        loop: true,
-        autoplayButtonOutput: false,
-        nav: false,
-        controls: true,
-      });
+  if (!testimonialSliders.length) return;
+
+  testimonialSliders.forEach((slider) => {
+    tns({
+      container: slider,
+      mode: "carousel",
+      items: 1,
+      fixedWidth: 300,
+      gutter: 24,
+      mouseDrag: true,
+      touch: true,
+      preventScrollOnTouch: "auto",
+      autoplay: true,
+      autoplayTimeout: 4000,
+      loop: true,
+      autoplayButtonOutput: false,
+      nav: false,
+      controls: true,
+      responsive: {
+        0: {
+          fixedWidth: 300,
+          gutter: 0,
+        },
+        768: {
+          fixedWidth: 300,
+          gutter: 16,
+        },
+        1024: {
+          fixedWidth: 300,
+          gutter: 24,
+        },
+      },
     });
-  }
+  });
 };
 
 const productsSliderJS = () => {

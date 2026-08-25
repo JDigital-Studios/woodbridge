@@ -86,7 +86,35 @@ a {
 
 .testimonials-slider-section {
   .testimonials-slider-wrap {
-    @apply relative;
+    @apply relative mx-auto px-10 md:px-14 lg:px-[80px];
+    box-sizing: border-box;
+    max-width: 100%;
+
+    @screen md-down {
+      width: calc(100% - 24px);
+      max-width: 380px;
+      padding-left: 34px;
+      padding-right: 34px;
+    }
+
+    .tns-outer {
+      @apply relative;
+
+      @screen md-down {
+        width: 300px;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    .tns-ovh {
+      @apply mx-auto;
+
+      @screen md-down {
+        width: 300px;
+        max-width: 100%;
+      }
+    }
 
     button[data-controls="prev"],
     button[data-controls="next"] {
@@ -100,12 +128,12 @@ a {
 
     button[data-controls="prev"] {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 24'%3E%3Cpath fill='currentColor' d='M1.519 12.868a1 1 0 0 1 0-1.736L19.5.855a1 1 0 0 1 1.5.868v20.554a1 1 0 0 1-1.5.868Z'/%3E%3C/svg%3E");
-      @apply left-3 lg:left-4;
+      @apply left-1 md:left-3 lg:left-4;
     }
 
     button[data-controls="next"] {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 24'%3E%3Cpath d='M11.132,1.519a1,1,0,0,1,1.736,0L23.145,19.5a1,1,0,0,1-.868,1.5H1.723a1,1,0,0,1-.868-1.5Z' transform='translate(21) rotate(90)' fill='currentColor'/%3E%3C/svg%3E%0A");
-      @apply right-3 lg:right-4;
+      @apply right-1 md:right-3 lg:right-4;
     }
 
     [data-controls] {
@@ -120,8 +148,10 @@ a {
   .testimonials-slider {
     .slideshow {
       .slideshow-inner {
-        @apply !flex !flex-col !items-center !justify-center h-full px-[33px] py-[30px];
-        max-width: 330px;
+        @apply !flex !flex-col !items-center !justify-center text-center px-[33px] py-[30px];
+        width: 300px;
+        height: 300px;
+        max-width: 300px;
         margin: 0 auto;
       }
     }

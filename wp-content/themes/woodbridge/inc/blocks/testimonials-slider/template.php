@@ -18,7 +18,7 @@ $items		= get_field('items');
 		<h2 class="text-2xl !leading-[1.32em] text-center mb-10 px-5"><?php echo $headline; ?></h2>
 		<?php endif; ?>
 	</div>
-	<div class="px-14 lg:px-[80px] testimonials-slider-wrap" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="240">
+	<div class="testimonials-slider-wrap" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="240">
 		<div class="testimonials-slider">
 			<?php foreach ($items as $item) : ?>
 			<div class="slideshow">
