@@ -268,6 +268,11 @@ require get_template_directory() . '/inc/blocks/load-blocks.php';
 require get_template_directory() . '/inc/post-types/wines.php';
 
 /**
+ * Pear Commerce locator and shoppable PDP.
+ */
+require get_template_directory() . '/inc/pear-commerce.php';
+
+/**
  * Add title attribute in menu
  */
 add_filter('nav_menu_link_attributes', function ($atts, $item) {

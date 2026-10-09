@@ -71,14 +71,20 @@
 				<?php endif; ?>
 			</div>
 			<?php
-			$wine_upc = get_field('field_wine_upc');
-			// $widget_id = get_field('mikmak_widget_id', 'option');
-			$widget_id = '6a15c5e57bed13d7ae1519d5';
-			if ($widget_id && $wine_upc) : ?>
+			// Old MikMak block. Kept so it can be restored.
+			if (false) :
+				$wine_upc = get_field('field_wine_upc');
+				// $widget_id = get_field('mikmak_widget_id', 'option');
+				$widget_id = '6a15c5e57bed13d7ae1519d5';
+				if ($widget_id && $wine_upc) : ?>
 				<div class="wine-mikmak-wrap mt-6">
 					<div data-mm-wtbid="<?php echo esc_attr($widget_id); ?>" data-mm-ids="<?php echo esc_attr(sanitize_text_field($wine_upc)); ?>"></div>
 				</div>
-			<?php endif; ?>
+			<?php endif;
+			endif; ?>
+			<div class="max-w-[540px] w-full mx-auto px-5 mt-6">
+				<div id="pear-pdp-target"></div>
+			</div>
 		</div>
 	</div>
 </section>
