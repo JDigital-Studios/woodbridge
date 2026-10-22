@@ -321,3 +321,24 @@ function woodbridge_insert_cookiebot_after_privacy( $items, $args ) {
 	return $items;
 }
 add_filter( 'wp_nav_menu_items', 'woodbridge_insert_cookiebot_after_privacy', 10, 2 );
+
+/**
+ * Age gate accessibility: dialog semantics, keyboard focus management and a
+ * "Skip to main content" link. See a11y/age-gate-a11y.js for what the config does.
+ */
+function woodbridge_enqueue_age_gate_a11y() {
+	$file = get_template_directory() . '/a11y/age-gate-a11y.js';
+	if ( ! file_exists( $file ) ) {
+		return;
+	}
+	wp_register_script( 'age-gate-a11y', get_template_directory_uri() . '/a11y/age-gate-a11y.js', array(), (string) filemtime( $file ), true );
+	$config = array(
+		'gate' => '.age-popup',
+		'keep' => array( '#terms-popup', '#privacy-popup' ),
+		'modals' => array( '#terms-popup', '#privacy-popup' ),
+		'main' => '',
+	);
+	wp_add_inline_script( 'age-gate-a11y', 'window.AgeGateA11yConfig = ' . wp_json_encode( $config ) . ';', 'before' );
+	wp_enqueue_script( 'age-gate-a11y' );
+}
+add_action( 'wp_enqueue_scripts', 'woodbridge_enqueue_age_gate_a11y', 20 );
