@@ -155,6 +155,18 @@
       a.setAttribute('tabindex', '-1');
       a.setAttribute('role', 'presentation');
     });
+    // a checkbox marked `required` is announced as "invalid entry" before the
+    // visitor has done anything; keep the meaning without the invalid state
+    qsa(el, 'input[required]').forEach(function (cb) {
+      cb.removeAttribute('required');
+      cb.setAttribute('aria-required', 'true');
+    });
+    // buttons whose label is repeated by CSS (span[data-title] + ::before) are
+    // read twice ("OF COURSE OF COURSE"): give them one explicit name
+    qsa(el, 'span[data-title]').forEach(function (sp) {
+      var host = sp.closest('button, a');
+      if (host && !host.hasAttribute('aria-label')) { host.setAttribute('aria-label', sp.getAttribute('data-title')); }
+    });
     // terms checkbox needs a name
     qsa(el, 'input[type="checkbox"]').forEach(function (cb) {
       if (cb.hasAttribute('aria-label') || cb.hasAttribute('aria-labelledby')) { return; }
@@ -167,7 +179,17 @@
         var wrap = cb.closest('label');
         if (wrap && wrap.textContent.replace(/\s+/g, '').length) { named = true; }
       }
-      if (!named) { cb.setAttribute('aria-label', cfg.termsLabel || TERMS_LABEL); }
+      if (!named) {
+        // use the visible "I agree to the Terms..." text so the name matches the
+        // page language; fall back to the configured text if none is found
+        var holder = null;
+        for (var n = cb.parentElement; n && n !== el; n = n.parentElement) {
+          var txt = (n.textContent || '').replace(/\s+/g, ' ').trim();
+          if (txt.length >= 12) { if (txt.length <= 220) { holder = n; } break; }
+        }
+        if (holder) { cb.setAttribute('aria-labelledby', uid(holder, 'a11y-terms')); }
+        else { cb.setAttribute('aria-label', cfg.termsLabel || TERMS_LABEL); }
+      }
     });
     // javascript:/# links that open a legal URL: use the real URL
     qsa(el, 'a[data-src]').forEach(function (a) {
@@ -183,6 +205,16 @@
     qsa(document, '#modal_screen[role="img"]').forEach(function (n) {
       n.removeAttribute('role');
       n.setAttribute('aria-hidden', 'true');
+    });
+  }
+
+  function nameCloseButtons(root) {
+    qsa(root, 'button, [role="button"]').forEach(function (b) {
+      if (b.hasAttribute('aria-label') || b.hasAttribute('aria-labelledby') || b.getAttribute('title')) { return; }
+      if ((b.textContent || '').replace(/\s+/g, '').length) { return; }
+      if (/close/i.test((b.className && b.className.baseVal === undefined ? b.className : '') + ' ' + b.id)) {
+        b.setAttribute('aria-label', 'Close');
+      }
     });
   }
 
@@ -241,6 +273,33 @@
   }
 
   /* ---------- lifecycle ---------- */
+  // Screen readers speak a dialog's name when focus *enters* it. On page load the
+  // first focus lands before the reader has finished loading the page, so enter
+  // the dialog once more after load (unless the visitor / a banner already has focus).
+  function announce(gate) {
+    var run = function () {
+      if (!active) { return; }
+      var a = document.activeElement;
+      if (a && a !== document.body && a !== gate) { return; }
+      try {
+        document.body.setAttribute('tabindex', '-1');
+        document.body.focus({ preventScroll: true });
+        document.body.removeAttribute('tabindex');
+      } catch (e) {}
+      window.setTimeout(function () {
+        if (!active) { return; }
+        var b = document.activeElement;
+        if (b && b !== document.body && b !== gate) { return; }
+        // screen readers announce the dialog's name when focus moves into a
+        // control inside it, so land on the first control rather than the container
+        var first = qsa(gate, FOCUSABLE).filter(function (el) { return el.tabIndex >= 0 && visible(el); })[0];
+        try { (first || gate).focus({ preventScroll: true }); } catch (e) {}
+      }, 150);
+    };
+    if (document.readyState === 'complete') { window.setTimeout(run, 700); }
+    else { window.addEventListener('load', function () { window.setTimeout(run, 900); }); }
+  }
+
   var watchTimer = null;
   function startWatching() {
     // the gate can be hidden by a CSS transition or timer that causes no DOM
@@ -257,6 +316,9 @@
     previous = document.activeElement;
     decorate(gate, LABEL);
     sanitize(gate);
+    nameCloseButtons(gate);
+    KEEP.concat(MODALS).forEach(function (sel) { qsa(document, sel).forEach(nameCloseButtons); });
+    announce(gate);
     inertBackground(gate);
     document.addEventListener('keydown', onKeydown, true);
     try { gate.focus({ preventScroll: true }); } catch (e) { gate.focus(); }
