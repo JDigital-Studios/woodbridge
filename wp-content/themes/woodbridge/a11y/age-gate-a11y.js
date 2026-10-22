@@ -29,6 +29,9 @@
   if (!cfg.gate) { return; }
   // legal pages are also loaded inside the gate's own popup iframe; nothing to do there
   try { if (window.top !== window.self) { return; } } catch (e) { return; }
+  // some consent tools replay scripts / DOMContentLoaded listeners: run only once
+  if (window.__ageGateA11yLoaded) { return; }
+  window.__ageGateA11yLoaded = true;
 
   var KEEP = (cfg.keep || []).concat([
     '#CybotCookiebotDialog',
@@ -82,6 +85,7 @@
   /* ---------- skip link ---------- */
   function addSkipLink() {
     try {
+      if (document.querySelector('a.a11y-skip-link')) { return; }
       var links = qsa(document, 'a[href^="#"]').slice(0, 6);
       for (var i = 0; i < links.length; i++) {
         if (/skip/i.test(links[i].textContent) || /skip/i.test(links[i].className)) { return; }
@@ -315,7 +319,10 @@
     (window.requestAnimationFrame || window.setTimeout)(check);
   }
 
+  var started = false;
   function init() {
+    if (started) { return; }
+    started = true;
     addStyles();
     addSkipLink();
     check();
