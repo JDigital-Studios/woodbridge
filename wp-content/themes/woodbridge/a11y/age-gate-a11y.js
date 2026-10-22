@@ -237,8 +237,19 @@
   }
 
   /* ---------- lifecycle ---------- */
+  var watchTimer = null;
+  function startWatching() {
+    // the gate can be hidden by a CSS transition or timer that causes no DOM
+    // mutation we can observe, so keep checking while it is open
+    if (!watchTimer) { watchTimer = window.setInterval(schedule, 400); }
+  }
+  function stopWatching() {
+    if (watchTimer) { window.clearInterval(watchTimer); watchTimer = null; }
+  }
+
   function activate(gate) {
     active = true;
+    startWatching();
     previous = document.activeElement;
     decorate(gate, LABEL);
     sanitize(gate);
@@ -250,11 +261,11 @@
   function deactivate() {
     active = false;
     document.removeEventListener('keydown', onKeydown, true);
+    stopWatching();
     restoreBackground();
-    if (previous && previous !== document.body && document.contains(previous) && visible(previous)) {
-      try { previous.focus(); } catch (e) {}
-    } else if (document.body) {
-      // next Tab starts at the top of the page (skip link)
+    // the gate opens on page load, so there is no opener to return to: start
+    // again from the top of the page so the next Tab reaches the skip link
+    if (document.body) {
       document.body.setAttribute('tabindex', '-1');
       try { document.body.focus({ preventScroll: true }); } catch (e) {}
       document.body.removeAttribute('tabindex');
@@ -317,6 +328,13 @@
       });
     } catch (e) {}
     window.addEventListener('load', schedule);
+    document.addEventListener('transitionend', schedule, true);
+    document.addEventListener('animationend', schedule, true);
+    document.addEventListener('click', function () {
+      window.setTimeout(schedule, 50);
+      window.setTimeout(schedule, 450);
+      window.setTimeout(schedule, 1100);
+    }, true);
     // jQuery fades finish without DOM mutations we can see; re-check briefly
     var n = 0;
     var t = window.setInterval(function () { schedule(); if (++n > 40) { window.clearInterval(t); } }, 250);
