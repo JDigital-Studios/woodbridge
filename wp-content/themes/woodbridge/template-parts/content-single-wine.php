@@ -83,7 +83,10 @@
 			<?php endif;
 			endif; ?>
 			<div class="max-w-[540px] w-full mx-auto px-5 mt-6">
-				<div id="pear-pdp-target"></div>
+				<?php // 1px black box around the widget, flush with it. ?>
+				<div class="wine-pear-box" style="box-sizing:border-box;width:100%;border:1px solid #000;">
+					<div id="pear-pdp-target"></div>
+				</div>
 			</div>
 		</div>
 	</div>
