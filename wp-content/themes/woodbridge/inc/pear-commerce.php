@@ -42,7 +42,8 @@ add_action('init', 'woodbridge_replace_mikmak_shortcode', 20);
 
 function woodbridge_pear_map_shortcode()
 {
-	return '<div id="pear-map-target"></div>';
+	// 1px black box around the widget, flush with it.
+	return '<div class="pear-map-box" style="box-sizing:border-box;width:100%;border:1px solid #000000;"><div id="pear-map-target"></div></div>';
 }
 
 /**
