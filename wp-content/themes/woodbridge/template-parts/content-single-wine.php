@@ -82,13 +82,18 @@
 				</div>
 			<?php endif;
 			endif; ?>
-			<div class="max-w-[540px] w-full mx-auto px-5 mt-6">
-				<?php // 1px black box around the widget, flush with it. ?>
-				<div class="wine-pear-box" style="box-sizing:border-box;width:100%;border:1px solid #000;">
-					<div id="pear-pdp-target"></div>
-				</div>
-			</div>
 		</div>
+	</div>
+	<?php // Pear retailer list: centered under the bottle and description, with a headline. No outline. ?>
+	<style>
+		.wine-pear-locator { max-width: 480px; margin: 40px auto 0; padding: 0 20px; text-align: center; }
+		.wine-pear-locator__title { margin: 0 0 24px; font-size: 1.5rem; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; text-align: center; }
+		.wine-pear-locator #pear-pdp-target { width: 100%; }
+		@media (min-width: 1024px) { .wine-pear-locator { margin-top: 56px; } }
+	</style>
+	<div class="wine-pear-locator" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+		<h2 class="wine-pear-locator__title"><?php esc_html_e('Find in store', 'woodbridge'); ?></h2>
+		<div id="pear-pdp-target"></div>
 	</div>
 </section>
 
